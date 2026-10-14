@@ -1,0 +1,996 @@
+qedqeqewqewqeweqewq<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRON FIST LEAGUE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/game.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 0: WELCOME CINEMATIC
+  ════════════════════════════════════════════ -->
+  <div id="screen-welcome" class="screen active">
+    <!-- Cinematic Background -->
+    <div class="welcome-bg">
+      <div class="welcome-particle-layer"></div>
+      <div class="welcome-glow-layer"></div>
+      <div class="welcome-character-layer"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="welcome-content">
+      <!-- Title Animation -->
+      <div class="welcome-title-container">
+        <div class="welcome-pre-title">ENTER THE</div>
+        <div class="welcome-main-title">IRON FIST<br>LEAGUE</div>
+        <div class="welcome-sub-title">TRAIN. FIGHT. BECOME LEGEND.</div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="welcome-actions">
+        <button class="welcome-btn btn-primary" id="welcome-login">
+          <span class="btn-icon">▶</span>
+          <span class="btn-text">LOG IN</span>
+          <span class="btn-glow"></span>
+        </button>
+        
+        <button class="welcome-btn btn-secondary" id="welcome-signup">
+          <span class="btn-icon">⚔</span>
+          <span class="btn-text">CREATE ACCOUNT</span>
+          <span class="btn-glow"></span>
+        </button>
+        
+        <button class="welcome-btn btn-tertiary" id="welcome-guest">
+          <span class="btn-icon">👤</span>
+          <span class="btn-text">CONTINUE AS GUEST</span>
+          <span class="btn-subtext">Limited access - progress not saved</span>
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="welcome-footer">
+        <div class="welcome-version">v1.0.0 · SEASON 1</div>
+        <div class="welcome-hint">ESC: Skip Intro | ENTER: Select</div>
+      </div>
+    </div>
+
+    <!-- Animated Scanline -->
+    <div class="welcome-scanline" aria-hidden="true"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 1: LOGIN / SIGNUP
+  ════════════════════════════════════════════ -->
+  <div id="screen-login" class="screen">
+    <div class="menu-bg-overlay"></div>
+
+    <div class="menu-scanline" aria-hidden="true"></div>
+
+    <div class="auth-container">
+      <!-- Back Navigation -->
+      <div class="auth-header">
+        <button class="auth-back-btn" id="login-back" aria-label="Back to Welcome">
+          <span class="back-icon">←</span> BACK
+        </button>
+        <div class="auth-header-title" id="auth-header-title">ENTER THE ARENA</div>
+      </div>
+
+      <!-- Forms Container -->
+      <div class="auth-forms">
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active" data-form="login">
+          <div class="form-header">
+            <h2 class="form-title">LOGIN TO YOUR ACCOUNT</h2>
+            <p class="form-subtitle">Enter your credentials to continue your fight</p>
+          </div>
+
+          <div class="form-body">
+            <!-- Username/Email Field -->
+            <div class="form-group">
+              <label for="login-username" class="form-label">
+                <span class="label-icon">👤</span>
+                USERNAME OR EMAIL
+              </label>
+              <input type="text" id="login-username" class="form-input" 
+                     placeholder="Enter your username or email" 
+                     autocomplete="username" required>
+              <div class="form-hint">Enter your registered username or email address</div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="login-password" class="form-label">
+                <span class="label-icon">🔒</span>
+                PASSWORD
+              </label>
+              <div class="password-wrapper">
+                <input type="password" id="login-password" class="form-input" 
+                       placeholder="Enter your password" 
+                       autocomplete="current-password" required>
+                <button type="button" class="password-toggle" id="login-show-password" 
+                        aria-label="Show password">
+                  👁
+                </button>
+              </div>
+              <div class="form-hint">
+                <a href="#" class="form-link" id="login-forgot-password">Forgot password?</a>
+              </div>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="form-checkbox">
+              <input type="checkbox" id="login-remember" class="checkbox-input">
+              <label for="login-remember" class="checkbox-label">
+                <span class="checkbox-custom"></span>
+                Remember me on this device
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="login-submit" class="form-submit btn-primary">
+              <span class="submit-text">LOG IN</span>
+              <span class="submit-icon">→</span>
+            </button>
+
+            <!-- Divider -->
+            <div class="form-divider">
+              <span class="divider-text">OR</span>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="form-footer">
+              <p class="footer-text">
+                Don't have an account? 
+                <a href="#" class="footer-link" id="login-to-signup">Create Account</a>
+              </p>
+              <button type="button" class="form-alt-action" id="login-guest">
+                <span class="alt-icon">👤</span>
+                Continue as Guest
+                <span class="alt-subtext">Limited access - progress not saved</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="auth-form" data-form="signup">
+          <div class="form-header">
+            <h2 class="form-title">JOIN THE LEAGUE</h2>
+            <p class="form-subtitle">Create your fighter account to save progress</p>
+          </div>
+
+          <div class="form-body">
+            <!-- Username Field -->
+            <div class="form-group">
+              <label for="signup-username" class="form-label">
+                <span class="label-icon">👤</span>
+                FIGHTER NAME
+              </label>
+              <input type="text" id="signup-username" class="form-input" 
+                     placeholder="Choose your username (3-20 characters)" 
+                     autocomplete="username" required>
+              <div class="form-hint">Letters, numbers, underscores, and hyphens only</div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="signup-email" class="form-label">
+                <span class="label-icon">📧</span>
+                EMAIL ADDRESS
+              </label>
+              <input type="email" id="signup-email" class="form-input" 
+                     placeholder="Enter your email address" 
+                     autocomplete="email" required>
+              <div class="form-hint">We'll never share your email with anyone</div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="signup-password" class="form-label">
+                <span class="label-icon">🔒</span>
+                PASSWORD
+              </label>
+              <div class="password-wrapper">
+                <input type="password" id="signup-password" class="form-input" 
+                       placeholder="Create a strong password (min. 8 characters)" 
+                       autocomplete="new-password" required>
+                <button type="button" class="password-toggle" id="signup-show-password" 
+                        aria-label="Show password">
+                  👁
+                </button>
+              </div>
+              <div class="form-hint">
+                Must contain uppercase, lowercase, and a number
+              </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+              <label for="signup-confirm" class="form-label">
+                <span class="label-icon">🔐</span>
+                CONFIRM PASSWORD
+              </label>
+              <div class="password-wrapper">
+                <input type="password" id="signup-confirm" class="form-input" 
+                       placeholder="Confirm your password" 
+                       autocomplete="new-password" required>
+                <button type="button" class="password-toggle" id="signup-show-confirm" 
+                        aria-label="Show password">
+                  👁
+                </button>
+              </div>
+            </div>
+
+            <!-- Terms Agreement -->
+            <div class="form-checkbox">
+              <input type="checkbox" id="signup-terms" class="checkbox-input" required>
+              <label for="signup-terms" class="checkbox-label">
+                <span class="checkbox-custom"></span>
+                I agree to the 
+                <a href="#" class="terms-link">Terms of Service</a> 
+                and 
+                <a href="#" class="terms-link">Privacy Policy</a>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="signup-submit" class="form-submit btn-primary">
+              <span class="submit-text">CREATE ACCOUNT</span>
+              <span class="submit-icon">⚔</span>
+            </button>
+
+            <!-- Divider -->
+            <div class="form-divider">
+              <span class="divider-text">OR</span>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="form-footer">
+              <p class="footer-text">
+                Already have an account? 
+                <a href="#" class="footer-link" id="signup-to-login">Log In</a>
+              </p>
+              <button type="button" class="form-alt-action" id="signup-back">
+                <span class="alt-icon">←</span>
+                Back to Welcome Screen
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Auth Footer -->
+      <div class="auth-footer">
+        <div class="auth-security">
+          <span class="security-icon">🔒</span>
+          <span class="security-text">Secure authentication • Your data is protected</span>
+        </div>
+        <div class="auth-hint">
+          <span class="hint-text">ESC: Cancel • TAB: Navigate • ENTER: Submit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 1: MAIN MENU
+  ════════════════════════════════════════════ -->
+  <div id="screen-main-menu" class="screen">
+    <div class="menu-bg-overlay"></div>
+
+    <!-- Animated scanline sweep -->
+    <div class="menu-scanline" aria-hidden="true"></div>
+
+    <div class="menu-content">
+      <div class="logo-block">
+        <div class="logo-pre-text">SEASON 1 · EARLY ACCESS</div>
+        <div class="logo-title">IRON FIST<br>LEAGUE</div>
+        <div class="logo-tagline">TRAIN. FIGHT. BECOME LEGEND.</div>
+      </div>
+
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main Menu">
+        <button class="nav-item active" data-action="arcade" tabindex="0">
+          <span class="nav-icon">▶</span>ARCADE
+          <span class="nav-desc">Fight through the ranked circuit</span>
+        </button>
+        <button class="nav-item" data-action="versus" tabindex="0">
+          <span class="nav-icon">⚔</span>VERSUS
+          <span class="nav-desc">Local 2-player match</span>
+        </button>
+        <button class="nav-item" data-action="training" tabindex="0">
+          <span class="nav-icon">◈</span>TRAINING
+          <span class="nav-desc">Practice moves &amp; combos</span>
+        </button>
+        <button class="nav-item" data-action="settings" tabindex="0">
+          <span class="nav-icon">⚙</span>SETTINGS
+          <span class="nav-desc">Game options &amp; controls</span>
+        </button>
+        <button class="nav-item" data-action="exit" tabindex="0">
+          <span class="nav-icon">✕</span>EXIT
+        </button>
+      </nav>
+
+      <!-- Build version watermark -->
+      <div class="menu-version">v0.9.2 · BETA BUILD</div>
+    </div>
+
+    <!-- Fighter art panels -->
+    <div class="menu-fighters" aria-hidden="true">
+      <div class="menu-fighter-left"></div>
+      <div class="menu-fighter-right"></div>
+    </div>
+
+    <!-- Bottom accent bar -->
+    <div class="menu-bottom-bar" aria-hidden="true">
+      <span>A/D MOVE</span>
+      <span>W JUMP</span>
+      <span>S CROUCH</span>
+      <span>J LIGHT · K HEAVY · L KICK</span>
+      <span>U SPECIAL · I GRAB · O BLOCK</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 2: CHARACTER SELECT
+  ════════════════════════════════════════════ -->
+  <div id="screen-char-select" class="screen">
+
+    <!-- Header bar with mode label + back -->
+    <div class="cs-header">
+      <button class="screen-back-btn" id="cs-back-btn" aria-label="Back to Main Menu">← BACK</button>
+      <span class="cs-header-title">CHARACTER SELECT</span>
+      <span class="cs-mode-badge" id="cs-mode-badge">ARCADE</span>
+    </div>
+
+    <div class="cs-layout">
+
+      <!-- Left: P1 Preview -->
+      <div class="cs-preview cs-preview-p1" id="cs-preview-p1">
+        <div class="cs-player-label p1-label">PLAYER 1</div>
+        <div class="cs-portrait" id="cs-portrait-p1" data-char="marcus">
+          <canvas id="portrait-canvas-p1" width="200" height="280"></canvas>
+          <div class="cs-portrait-glow p1-glow"></div>
+        </div>
+        <div class="cs-char-info" id="cs-info-p1">
+          <div class="cs-char-name" id="cs-name-p1">MARCUS "THE ANVIL" VANCE</div>
+          <div class="cs-char-archetype" id="cs-arch-p1">BRUISER / GRAPPLER</div>
+          <div class="cs-stats" id="cs-stats-p1"></div>
+        </div>
+      </div>
+
+      <!-- Center: Roster Grid + Action -->
+      <div class="cs-center">
+        <div class="cs-versus-strip" aria-hidden="true">
+          <div class="cs-versus-p1-name" id="cs-vs-name-p1">—</div>
+          <div class="cs-versus-vs">VS</div>
+          <div class="cs-versus-p2-name" id="cs-vs-name-p2">—</div>
+        </div>
+        <div class="cs-roster" id="cs-roster" role="grid" aria-label="Character Roster"></div>
+        <div class="cs-center-footer">
+          <div class="cs-controls-hint">← → SELECT &nbsp;·&nbsp; ENTER CONFIRM</div>
+          <button class="btn-fight" id="btn-fight" disabled>FIGHT →</button>
+        </div>
+      </div>
+
+      <!-- Right: CPU / P2 Preview -->
+      <div class="cs-preview cs-preview-p2" id="cs-preview-p2">
+        <div class="cs-player-label p2-label" id="cs-p2-label">CPU</div>
+        <div class="cs-portrait" id="cs-portrait-p2" data-char="vesper">
+          <canvas id="portrait-canvas-p2" width="200" height="280"></canvas>
+          <div class="cs-portrait-glow p2-glow"></div>
+        </div>
+        <div class="cs-char-info" id="cs-info-p2">
+          <div class="cs-char-name" id="cs-name-p2">VESPER "KESTREL" THORNE</div>
+          <div class="cs-char-archetype" id="cs-arch-p2">SPEEDSTER / AGILITY</div>
+          <div class="cs-stats" id="cs-stats-p2"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 3: STAGE SELECT
+  ════════════════════════════════════════════ -->
+  <div id="screen-stage-select" class="screen">
+
+    <div class="ss-header-bar">
+      <button class="screen-back-btn" id="ss-back-btn" aria-label="Back to Character Select">← BACK</button>
+      <span class="ss-header-title">SELECT STAGE</span>
+      <div class="ss-fighter-chip">
+        <span class="ss-chip-p1" id="ss-chip-p1">P1: MARCUS</span>
+        <span class="ss-chip-sep">vs</span>
+        <span class="ss-chip-p2" id="ss-chip-p2">CPU: VESPER</span>
+      </div>
+    </div>
+
+    <div class="ss-body">
+      <div class="ss-grid" id="ss-grid" role="grid" aria-label="Stage Selection"></div>
+
+      <!-- Stage details panel -->
+      <div class="ss-detail-panel" id="ss-detail-panel">
+        <div class="ss-detail-name" id="ss-detail-name">UNDERGROUND ARENA</div>
+        <div class="ss-detail-desc" id="ss-detail-desc">Pit fights beneath the city.</div>
+        <button class="btn-confirm" id="btn-confirm-stage">CONFIRM STAGE</button>
+        <div class="ss-controls-hint">← → SELECT &nbsp;·&nbsp; ENTER CONFIRM &nbsp;·&nbsp; ESC BACK</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 4: MATCH INTRO
+  ════════════════════════════════════════════ -->
+  <div id="screen-match-intro" class="screen">
+    <div class="intro-bg-vignette" aria-hidden="true"></div>
+
+    <div class="intro-top-strip" id="intro-top-strip">
+      <span class="intro-stage-label" id="intro-stage-label">UNDERGROUND ARENA</span>
+    </div>
+
+    <div class="intro-layout">
+      <div class="intro-fighter intro-left" id="intro-left">
+        <div class="intro-player-badge p1-badge">PLAYER 1</div>
+        <div class="intro-name p1-name" id="intro-name-p1"></div>
+        <div class="intro-nick p1-nick" id="intro-nick-p1"></div>
+        <div class="intro-archetype p1-arch" id="intro-arch-p1"></div>
+      </div>
+
+      <div class="intro-center">
+        <div class="intro-vs">VS</div>
+        <div class="intro-round-label" id="intro-round-label">ROUND 1</div>
+      </div>
+
+      <div class="intro-fighter intro-right" id="intro-right">
+        <div class="intro-player-badge p2-badge" id="intro-p2-badge">CPU</div>
+        <div class="intro-name p2-name" id="intro-name-p2"></div>
+        <div class="intro-nick p2-nick" id="intro-nick-p2"></div>
+        <div class="intro-archetype p2-arch" id="intro-arch-p2"></div>
+      </div>
+    </div>
+
+    <div class="intro-bottom-bar" aria-hidden="true">
+      <div class="intro-countdown-bar" id="intro-countdown-bar"></div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 5: GAMEPLAY (Canvas)
+  ════════════════════════════════════════════ -->
+  <div id="screen-gameplay" class="screen">
+    <canvas id="game-canvas" role="img" aria-label="Game Arena"></canvas>
+
+    <!-- HUD overlay (HTML layer over canvas) -->
+    <div class="hud" id="hud" aria-live="polite" aria-atomic="false">
+
+      <!-- Top bar -->
+      <div class="hud-top">
+
+        <!-- P1 side -->
+        <div class="hud-side hud-left">
+          <div class="hud-portrait hud-portrait-p1" id="hud-portrait-p1" aria-hidden="true"></div>
+          <div class="hud-info-left">
+            <div class="hud-name" id="hud-name-p1">MARCUS</div>
+            <div class="hud-health-wrap">
+              <div class="hud-health-bar" id="hud-health-p1" role="progressbar" aria-label="Player 1 Health" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <div class="hud-health-fill p1-fill" id="hud-health-fill-p1"></div>
+                <!-- Ghost bar for damage preview -->
+                <div class="hud-health-ghost p1-ghost" id="hud-health-ghost-p1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center: timer + round -->
+        <div class="hud-center">
+          <div class="hud-round-label" id="hud-round-label">ROUND 1</div>
+          <div class="hud-timer" id="hud-timer" aria-label="Round Timer" aria-live="off">99</div>
+          <div class="hud-round-pips" id="hud-round-pips" aria-label="Round Wins">
+            <div class="round-pip-group" id="p1-pips" aria-label="Player 1 Round Wins"></div>
+            <div class="round-pip-group" id="p2-pips" aria-label="Player 2 Round Wins"></div>
+          </div>
+        </div>
+
+        <!-- P2 side -->
+        <div class="hud-side hud-right">
+          <div class="hud-info-right">
+            <div class="hud-name" id="hud-name-p2">VESPER</div>
+            <div class="hud-health-wrap">
+              <div class="hud-health-bar" id="hud-health-p2" role="progressbar" aria-label="Player 2 Health" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <div class="hud-health-fill p2-fill" id="hud-health-fill-p2"></div>
+                <div class="hud-health-ghost p2-ghost" id="hud-health-ghost-p2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hud-portrait hud-portrait-p2" id="hud-portrait-p2" aria-hidden="true"></div>
+        </div>
+
+      </div><!-- /hud-top -->
+
+      <!-- Bottom: Iron Meters -->
+      <div class="hud-bottom">
+        <div class="hud-meter-block hud-meter-left">
+          <span class="meter-label">IRON METER</span>
+          <div class="hud-meter-bar" role="progressbar" aria-label="Player 1 Iron Meter">
+            <div class="hud-meter-fill p1-meter" id="hud-meter-fill-p1"></div>
+          </div>
+          <!-- Meter charge glow when full -->
+          <div class="meter-ready-label" id="meter-ready-p1" aria-live="polite"></div>
+        </div>
+        <div class="hud-meter-block hud-meter-right">
+          <div class="hud-meter-bar" role="progressbar" aria-label="Player 2 Iron Meter">
+            <div class="hud-meter-fill p2-meter" id="hud-meter-fill-p2"></div>
+          </div>
+          <div class="meter-ready-label" id="meter-ready-p2" aria-live="polite"></div>
+          <span class="meter-label">IRON METER</span>
+        </div>
+      </div>
+
+      <!-- Combo counter -->
+      <div class="hud-combo" id="hud-combo" style="display:none;" aria-live="polite">
+        <span class="combo-hits" id="combo-hits">0</span>
+        <span class="combo-label">HIT COMBO</span>
+        <div class="combo-damage" id="combo-damage"></div>
+      </div>
+
+    </div><!-- /hud -->
+
+    <!-- ─── ROUND RESULT overlay (shown between rounds) ─── -->
+    <div class="round-result-overlay" id="round-result-overlay" style="display:none;" aria-live="assertive">
+      <div class="round-result-panel" id="round-result-panel">
+        <div class="rr-title" id="rr-title">ROUND 1</div>
+        <div class="rr-winner" id="rr-winner"></div>
+        <div class="rr-pips-row" id="rr-pips-row"></div>
+        <div class="rr-next-hint" id="rr-next-hint">ROUND 2 STARTING…</div>
+      </div>
+    </div>
+
+    <!-- Pause Menu (overlay over canvas) -->
+    <div class="pause-overlay" id="pause-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Game Paused">
+      <div class="pause-menu">
+        <div class="pause-title">PAUSED</div>
+
+        <!-- Training mode hint bar (shown only in training) -->
+        <div class="pause-training-info" id="pause-training-info" style="display:none;">
+          <span class="pause-training-label">TRAINING MODE</span>
+        </div>
+
+        <button class="pause-btn active" id="pause-resume">▶ RESUME</button>
+        <button class="pause-btn" id="pause-restart">↺ RESTART ROUND</button>
+        <button class="pause-btn" id="pause-training-toggle" style="display:none;">◈ EXIT TRAINING</button>
+        <button class="pause-btn" id="pause-quit">✕ QUIT TO MENU</button>
+
+        <div class="pause-controls-ref">
+          <div class="pause-ctrl-title">CONTROLS</div>
+          <div class="pause-ctrl-grid">
+            <span>A / D</span><span>Move</span>
+            <span>W</span><span>Jump</span>
+            <span>S</span><span>Crouch</span>
+            <span>J</span><span>Light Attack</span>
+            <span>K</span><span>Heavy Attack</span>
+            <span>L</span><span>Kick</span>
+            <span>U</span><span>Special (50 meter)</span>
+            <span>I</span><span>Grab</span>
+            <span>O</span><span>Block</span>
+            <span>ESC</span><span>Pause / Resume</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Round Announcement overlay -->
+    <div class="round-announce" id="round-announce" style="display:none;" aria-live="assertive" aria-atomic="true">
+      <div class="announce-text" id="announce-text"></div>
+    </div>
+
+  </div><!-- /screen-gameplay -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 6: TRAINING MODE
+  ════════════════════════════════════════════ -->
+  <div id="screen-training" class="screen">
+
+    <div class="training-header">
+      <button class="screen-back-btn" id="training-back-btn" aria-label="Back to Main Menu">← BACK</button>
+      <span class="training-header-title">TRAINING MODE</span>
+      <span class="training-badge">◈ PRACTICE</span>
+    </div>
+
+    <div class="training-layout">
+
+      <!-- Left column: Character selection -->
+      <div class="training-col training-col-char">
+        <div class="training-section-label">SELECT CHARACTER</div>
+        <div class="training-char-grid" id="training-char-grid" role="grid" aria-label="Training Character Selection"></div>
+
+        <div class="training-section-label" style="margin-top:24px;">SELECT DUMMY</div>
+        <div class="training-char-grid training-dummy-grid" id="training-dummy-grid" role="grid" aria-label="Training Dummy Selection"></div>
+      </div>
+
+      <!-- Center column: Stage + settings -->
+      <div class="training-col training-col-stage">
+        <div class="training-section-label">SELECT STAGE</div>
+        <div class="training-stage-list" id="training-stage-list" role="listbox" aria-label="Training Stage Selection"></div>
+
+        <div class="training-section-label" style="margin-top:20px;">DUMMY BEHAVIOR</div>
+        <div class="training-options" id="training-options">
+          <label class="training-opt-row">
+            <span class="training-opt-label">DUMMY AI</span>
+            <select id="training-dummy-behavior" class="training-select">
+              <option value="stand">STAND STILL</option>
+              <option value="crouch">CROUCH</option>
+              <option value="block">ALWAYS BLOCK</option>
+              <option value="jump">RANDOM JUMP</option>
+              <option value="cpu" selected>CPU (NORMAL)</option>
+            </select>
+          </label>
+          <label class="training-opt-row">
+            <span class="training-opt-label">INFINITE HEALTH</span>
+            <input type="checkbox" id="training-infinite-health" checked />
+          </label>
+          <label class="training-opt-row">
+            <span class="training-opt-label">INFINITE METER</span>
+            <input type="checkbox" id="training-infinite-meter" checked />
+          </label>
+          <label class="training-opt-row">
+            <span class="training-opt-label">SHOW HITBOXES</span>
+            <input type="checkbox" id="training-show-hitboxes" />
+          </label>
+          <label class="training-opt-row">
+            <span class="training-opt-label">FRAME DATA</span>
+            <input type="checkbox" id="training-frame-data" />
+          </label>
+        </div>
+      </div>
+
+      <!-- Right column: Move list reference -->
+      <div class="training-col training-col-moves">
+        <div class="training-section-label">MOVE REFERENCE</div>
+        <div class="training-movelist" id="training-movelist">
+          <div class="training-movelist-char" id="training-movelist-char">MARCUS</div>
+          <div class="training-move-table" id="training-move-table">
+            <div class="tm-row tm-header">
+              <span>MOVE</span><span>INPUT</span><span>STARTUP</span><span>DAMAGE</span>
+            </div>
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Start Training button -->
+    <div class="training-footer">
+      <div class="training-selected-info" id="training-selected-info">
+        <span id="training-info-char">MARCUS</span> vs <span id="training-info-dummy">VESPER</span> · <span id="training-info-stage">UNDERGROUND ARENA</span>
+      </div>
+      <button class="btn-start-training" id="btn-start-training">START TRAINING →</button>
+    </div>
+
+  </div><!-- /screen-training -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 7: ROUND RESULT  (full-screen between rounds)
+       Note: lightweight version is the in-game overlay above.
+       This full-screen version is shown after final round / match end.
+  ════════════════════════════════════════════ -->
+  <div id="screen-result" class="screen">
+    <div class="result-bg-overlay" aria-hidden="true"></div>
+
+    <div class="result-content">
+
+      <!-- Match result header -->
+      <div class="result-header-strip">
+        <div class="result-match-type" id="result-match-type">ARCADE MATCH</div>
+      </div>
+
+      <!-- Winner display -->
+      <div class="result-winner-block">
+        <div class="result-winner-label">WINNER</div>
+        <div class="result-winner-name" id="result-winner-name"></div>
+        <div class="result-winner-nick" id="result-winner-nick"></div>
+        <div class="result-winner-arch" id="result-winner-arch"></div>
+      </div>
+
+      <!-- Round score bar -->
+      <div class="result-score-bar" id="result-score-bar">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Stats grid -->
+      <div class="result-stats" id="result-stats">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Per-player breakdown -->
+      <div class="result-player-stats" id="result-player-stats">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Action buttons -->
+      <div class="result-buttons">
+        <button class="result-btn active" id="btn-rematch">
+          <span class="result-btn-icon">↺</span>REMATCH
+        </button>
+        <button class="result-btn" id="btn-char-select">
+          <span class="result-btn-icon">⚔</span>CHAR SELECT
+        </button>
+        <button class="result-btn" id="btn-main-menu">
+          <span class="result-btn-icon">⌂</span>MAIN MENU
+        </button>
+      </div>
+
+      <div class="result-controls-hint">↑↓ NAVIGATE &nbsp;·&nbsp; ENTER SELECT</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 8: SETTINGS
+  ════════════════════════════════════════════ -->
+  <div id="screen-settings" class="screen">
+    <div class="settings-content">
+      <div class="settings-header">
+        <button class="screen-back-btn" id="settings-back-btn-top" aria-label="Back">← BACK</button>
+        <div class="settings-title">SETTINGS</div>
+      </div>
+
+      <div class="settings-tabs" role="tablist">
+        <button class="settings-tab active" data-tab="gameplay" role="tab" aria-selected="true">GAMEPLAY</button>
+        <button class="settings-tab" data-tab="display" role="tab" aria-selected="false">DISPLAY</button>
+        <button class="settings-tab" data-tab="controls" role="tab" aria-selected="false">CONTROLS</button>
+      </div>
+
+      <!-- Tab: Gameplay -->
+      <div class="settings-tab-panel active" id="settings-tab-gameplay" role="tabpanel">
+        <div class="settings-row">
+          <label for="setting-difficulty">AI DIFFICULTY</label>
+          <select id="setting-difficulty">
+            <option value="easy">EASY</option>
+            <option value="normal" selected>NORMAL</option>
+            <option value="hard">HARD</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <label for="setting-timer">ROUND TIME</label>
+          <select id="setting-timer">
+            <option value="60">60s</option>
+            <option value="99" selected>99s</option>
+            <option value="infinite">∞ INFINITE</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <label for="setting-rounds">ROUNDS TO WIN</label>
+          <select id="setting-rounds">
+            <option value="1">1 ROUND</option>
+            <option value="2" selected>BEST OF 3</option>
+            <option value="3">BEST OF 5</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <label for="setting-infinite-health">INFINITE HEALTH</label>
+          <input type="checkbox" id="setting-infinite-health" />
+        </div>
+        <div class="settings-row">
+          <label for="setting-infinite-meter">INFINITE METER</label>
+          <input type="checkbox" id="setting-infinite-meter" />
+        </div>
+      </div>
+
+      <!-- Tab: Display -->
+      <div class="settings-tab-panel" id="settings-tab-display" role="tabpanel">
+        <div class="settings-row">
+          <label for="setting-debug">DEBUG MODE</label>
+          <input type="checkbox" id="setting-debug" />
+        </div>
+        <div class="settings-row">
+          <label for="setting-hitboxes">SHOW HITBOXES</label>
+          <input type="checkbox" id="setting-hitboxes" />
+        </div>
+        <div class="settings-row">
+          <label for="setting-hurtboxes">SHOW HURTBOXES</label>
+          <input type="checkbox" id="setting-hurtboxes" />
+        </div>
+        <div class="settings-row">
+          <label>SCREEN SHAKE</label>
+          <select id="setting-screenshake">
+            <option value="full" selected>FULL</option>
+            <option value="reduced">REDUCED</option>
+            <option value="off">OFF</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tab: Controls reference -->
+      <div class="settings-tab-panel" id="settings-tab-controls" role="tabpanel">
+        <div class="settings-controls-grid">
+          <div class="ctrl-section-title">PLAYER 1</div>
+          <div class="ctrl-row"><span class="ctrl-key">A / D</span><span>Move Left / Right</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">W</span><span>Jump</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">S</span><span>Crouch / Guard Low</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">J</span><span>Light Attack</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">K</span><span>Heavy Attack</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">L</span><span>Kick</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">U</span><span>Special Move (50 meter)</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">I</span><span>Grab / Throw</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">O</span><span>Block</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">ESC</span><span>Pause</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">F1</span><span>Toggle Debug</span></div>
+          <div class="ctrl-row"><span class="ctrl-key">F2</span><span>Toggle Hitboxes</span></div>
+        </div>
+      </div>
+
+      <button class="btn-back" id="settings-back">← BACK TO MENU</button>
+    </div>
+  </div>
+
+
+  <!-- JS Modules -->
+  <script type="module" src="js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════════
+       FALLBACK: Inline nav wiring.
+       If the ES module fails to load (e.g. opened
+       directly as file://, CORS blocks modules),
+       this plain script keeps every screen
+       transition working so the game is still
+       playable while the module loads in background.
+  ════════════════════════════════════════════ -->
+  <script>
+  (function() {
+    // Screen IDs map
+    var SCREENS = {
+      MAIN_MENU:    'screen-main-menu',
+      CHAR_SELECT:  'screen-char-select',
+      STAGE_SELECT: 'screen-stage-select',
+      MATCH_INTRO:  'screen-match-intro',
+      GAMEPLAY:     'screen-gameplay',
+      RESULT:       'screen-result',
+      SETTINGS:     'screen-settings',
+      TRAINING:     'screen-training',
+    };
+
+    function showScreen(key) {
+      Object.values(SCREENS).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+      });
+      var target = document.getElementById(SCREENS[key]);
+      if (target) {
+        target.classList.add('active');
+        target.style.animation = 'none';
+        void target.offsetHeight;
+        target.style.animation = 'fadeIn 0.25s ease';
+      }
+      window.__iflScreen = key;
+    }
+
+    window.__iflScreen = 'MAIN_MENU';
+    window.__iflShowScreen = showScreen;
+
+    // Wait for DOM
+    function wireNav() {
+      // ── Main Menu nav ──
+      var navBtns = document.querySelectorAll('#main-nav .nav-item');
+      navBtns.forEach(function(btn) {
+        btn.style.cursor = 'pointer';
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var action = btn.dataset.action;
+          navBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          if (action === 'arcade' || action === 'versus') {
+            showScreen('CHAR_SELECT');
+            document.getElementById('cs-mode-badge').textContent =
+              action === 'arcade' ? 'ARCADE' : 'VERSUS';
+          } else if (action === 'training') {
+            showScreen('TRAINING');
+          } else if (action === 'settings') {
+            showScreen('SETTINGS');
+          } else if (action === 'exit') {
+            document.body.innerHTML =
+              '<div style="display:flex;align-items:center;justify-content:center;' +
+              'height:100vh;background:#000;font-family:Rajdhani,sans-serif;' +
+              'font-size:32px;color:#4ea8de;letter-spacing:.3em;text-align:center;' +
+              'flex-direction:column;gap:16px"><div>IRON FIST LEAGUE</div>' +
+              '<div style="font-size:14px;color:#3a6a8a;letter-spacing:.4em">' +
+              'THANK YOU FOR PLAYING.</div></div>';
+          }
+        });
+      });
+
+      // ── Back buttons ──
+      function wireBack(id, dest) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('click', function() { showScreen(dest); });
+      }
+      wireBack('cs-back-btn',           'MAIN_MENU');
+      wireBack('ss-back-btn',           'CHAR_SELECT');
+      wireBack('training-back-btn',     'MAIN_MENU');
+      wireBack('settings-back',         'MAIN_MENU');
+      wireBack('settings-back-btn-top', 'MAIN_MENU');
+
+      // ── Char Select → Stage Select ──
+      var fightBtn = document.getElementById('btn-fight');
+      if (fightBtn) {
+        fightBtn.disabled = false;
+        fightBtn.addEventListener('click', function() { showScreen('STAGE_SELECT'); });
+      }
+
+      // ── Stage Select → Match Intro → Gameplay ──
+      var confirmBtn = document.getElementById('btn-confirm-stage');
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', function() { showScreen('MATCH_INTRO'); });
+      }
+
+      // ── Training → Gameplay ──
+      var startTraining = document.getElementById('btn-start-training');
+      if (startTraining) {
+        startTraining.addEventListener('click', function() { showScreen('GAMEPLAY'); });
+      }
+
+      // ── Result buttons ──
+      var rematch = document.getElementById('btn-rematch');
+      var charSel = document.getElementById('btn-char-select');
+      var mainMenu = document.getElementById('btn-main-menu');
+      if (rematch)  rematch.addEventListener('click',  function() { showScreen('MATCH_INTRO'); });
+      if (charSel)  charSel.addEventListener('click',  function() { showScreen('CHAR_SELECT'); });
+      if (mainMenu) mainMenu.addEventListener('click', function() { showScreen('MAIN_MENU'); });
+
+      // ── Settings tabs ──
+      var tabs = document.querySelectorAll('.settings-tab');
+      var panels = document.querySelectorAll('.settings-tab-panel');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var target = tab.dataset.tab;
+          tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === target); });
+          panels.forEach(function(p) {
+            p.classList.toggle('active', p.id === 'settings-tab-' + target);
+          });
+        });
+      });
+
+      // ── Keyboard nav on main menu ──
+      var activeIdx = 0;
+      var allNavBtns = Array.from(navBtns);
+      function setActiveNav(i) {
+        activeIdx = (i + allNavBtns.length) % allNavBtns.length;
+        allNavBtns.forEach(function(b, idx) {
+          b.classList.toggle('active', idx === activeIdx);
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (window.__iflScreen !== 'MAIN_MENU') return;
+        if (e.code === 'ArrowDown' || e.code === 'KeyS') {
+          setActiveNav(activeIdx + 1); e.preventDefault();
+        } else if (e.code === 'ArrowUp' || e.code === 'KeyW') {
+          setActiveNav(activeIdx - 1); e.preventDefault();
+        } else if (e.code === 'Enter' || e.code === 'Space') {
+          allNavBtns[activeIdx] && allNavBtns[activeIdx].click(); e.preventDefault();
+        }
+      });
+
+      // Log status
+      console.log('[IFL Fallback] Navigation wired. ES module will override if loaded.');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', wireNav);
+    } else {
+      wireNav();
+    }
+  })();
+  </script>
+</body>
+</html>
